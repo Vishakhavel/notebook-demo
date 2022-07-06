@@ -1,72 +1,104 @@
 // import { initial } from 'lodash'
 import { createStore } from 'redux'
+import {
+  ADD_FILE,
+  ADD_FOLDER,
+  RENAME_FILE,
+  RENAME_FOLDER,
+  DELETE_FILE,
+  DELETE_FOLDER,
+} from '../constants'
+
 // import { createSlice } from '@reduxjs/toolkit'
 // create a store
 // create a reducer
 const initialState = {
-  folders: [
+  folder1: [
     {
-      name: 'folder1',
-      id: 'fid1',
-      files: [
-        {
-          title: 'file1',
-          id: 'id1',
-          content: ' content of file1',
-          raw_content: ' <div>content of file1</div>',
-          timestamp: 'time_goes_here',
-          tags: ['important', 'work'],
-        },
-        {
-          title: 'file2',
-          id: 'id2',
-          content: 'content of file2',
-          raw_content: ' <div>content of file2</div>',
-          timestamp: 'time_goes_here',
-          tags: ['personal'],
-        },
-        {
-          title: 'file3',
-          id: 'id3',
-          content: 'content of file3',
-          raw_content: ' <div>content of file3</div>',
-          timestamp: 'time_goes_here',
-          tags: ['reminders'],
-        },
-      ],
+      notes_id: 'udicvujchdji',
+      title: 'file 1',
+      content: '<div>hi</div>',
+      raw_content: 'hi',
     },
     {
-      name: 'folder2',
-      id: 'fid2',
-      files: [
-        {
-          title: 'file1',
-          id: 'id1',
-          content: ' content of file1',
-          raw_content: ' <div>content of file1</div>',
-          timestamp: 'time_goes_here',
-          tags: ['learning', 'work'],
-        },
-      ],
+      notes_id: 'udicvujchdji',
+      title: 'file 2',
+      content: '<div>hi</div>',
+      raw_content: 'hi',
+    },
+  ],
+  folder2: [
+    {
+      notes_id: 'udicvujchdji',
+      title: 'file 1',
+      content: '<div>hi</div>',
+      raw_content: 'hi',
+    },
+  ],
+  folder_3: [
+    {
+      notes_id: 'udicvujchdji',
+      title: 'file 1',
+      content: '<div>hi</div>',
+      raw_content: 'hi',
     },
     {
-      name: 'folder3',
-      id: 'fid3',
-      files: [],
+      notes_id: 'udicvujchdji',
+      title: 'file 1',
+      content: '<div>hi</div>',
+      raw_content: 'hi',
+    },
+    {
+      notes_id: 'udicvujchdji',
+      title: 'file 1',
+      content: '<div>hi</div>',
+      raw_content: 'hi',
     },
   ],
 }
+
 const folderReducer = (state = initialState, action) => {
-  if (action.type === 'ADD_FOLDER') {
-    return {
-      folders: state.folders.concat([
-        { name: action.folderName, children: [] },
-      ]),
-      // counter: state.counter + 1,
-      // showCounter: state.showCounter,
-      // even though in this action we don't really care about the showCounter variable state, we have to enter it here because redux simply overwrites the old state with what you return here!
+  // if (action.type === ADD_FILE) {
+  //   return {
+  //     folders: folders.folder1.concat(action.payload)
+  //   }
+  // }
+  if (action.type === ADD_FOLDER) {
+    const new_state = {
+      ...state,
     }
-  } else {
+    new_state[action.payload] = []
+    return new_state
+  }
+  // if (action.type === DELETE_FILE) {
+  //   return {
+  //     folders: state.folders.concat([
+  //       { name: action.folderName, children: [] },
+  //     ]),
+  //   }
+  // }
+  // if (action.type === DELETE_FOLDER) {
+  //   return {
+  //     folders: state.folders.concat([
+  //       { name: action.folderName, children: [] },
+  //     ]),
+  //   }
+  // }
+  // if (action.type === RENAME_FILE) {
+  //   return {
+  //     folders: state.folders.concat([
+  //       { name: action.folderName, children: [] },
+  //     ]),
+  //   }
+  // }
+  // if (action.type === RENAME_FOLDER) {
+  //   return {
+  //     folders: state.folders.concat([
+  //       { name: action.folderName, children: [] },
+  //     ]),
+  //   }
+  // }
+  else {
     return state
   }
 }

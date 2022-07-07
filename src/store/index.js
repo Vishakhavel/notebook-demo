@@ -82,38 +82,41 @@ const initialState = {
 }
 
 const folderReducer = (state = initialState, action) => {
-  // if (action.type === ADD_FILE) {
-  //   return {
-  //     folders: folders.folder1.concat(action.payload)
-  //   }
-  // }
   if (action.type === ADD_FOLDER) {
-    // const new_state = [
-    //   {
-    //     ...state,
-    //   },
-    // ]
     const new_state = {
       ...state,
     }
 
-    const new_folder_object = {
-      label: action.payload,
-      key: Math.random.toString(),
+    const folderName = action.payload
+
+    // const new_folder_object = {
+    //   label: action.payload,
+    //   key: Math.random.toString(),
+    //   icon: <FolderOutlined />,
+    //   children: [],
+    // }
+
+    // new_state.push({
+    //   label: action.payload,
+    //   key: Math.random.toString(),
+    //   icon: <FolderOutlined />,
+    //   children: [],
+    // })
+
+    // new_state.folderName  = {
+    //   label: folderName,
+    //   icon: <FolderOutlined />,
+    //   key: Math.random().toString(),
+    //   children: [],
+    // }
+
+    new_state[folderName] = {
+      label: folderName,
       icon: <FolderOutlined />,
+      key: Math.random().toString(),
       children: [],
     }
-
-    const woo = Object.assign(action.payload, new_folder_object)
-
-    console.log('woo:', woo)
-    // new_state[action.payload] = []
-    new_state.push({
-      label: action.payload,
-      key: Math.random.toString(),
-      icon: <FolderOutlined />,
-      children: [],
-    })
+    console.log(new_state)
     return new_state
   }
   // if (action.type === DELETE_FILE) {

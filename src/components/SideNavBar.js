@@ -76,7 +76,7 @@ const SideNavBar = () => {
   const folders = useSelector((state) => {
     const folder_data = []
     for (const item in state) {
-      console.log(state[item])
+      // console.log(state[item])
       // folder_data.concat(state[item])
       folder_data.push(state[item])
     }
@@ -84,9 +84,11 @@ const SideNavBar = () => {
     console.log('folder data:', folder_data)
     return folder_data
   })
+
+  const fullState = useSelector((state) => state)
   // console.log(folders)
   // console.log('items2:', items2)
-  console.log('store:', store)
+  console.log('state:', fullState)
   return (
     <Menu
       onClick={onClick}

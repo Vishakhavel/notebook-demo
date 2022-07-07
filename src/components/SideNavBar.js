@@ -19,39 +19,6 @@ import {
 import store from '../store'
 import { useReducer } from 'react'
 
-// const sele = (state) => state
-
-function getItem(label, key, icon, children, type) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  }
-}
-// const items = [
-//   {key:}
-// ]
-const items = [
-  getItem('important', 'sub1', <FolderOutlined />, [
-    getItem('deadlines', '1', <FileOutlined />),
-    getItem('notes_stuff', '2', <FileOutlined />),
-  ]),
-  getItem('React', 'sub2', <FolderOutlined />, [
-    getItem('hooks', '3', <FileOutlined />),
-    getItem('states', '4', <FileOutlined />),
-  ]),
-  getItem('personal', 'sub3', <FolderOutlined />, [
-    getItem('Option 9', '5', <FileOutlined />),
-    getItem('Option 10', '6', <FileOutlined />),
-  ]),
-  getItem('nodejs', 'sub4', <FolderOutlined />, [
-    getItem('Option 9', '7', <FileOutlined />),
-    getItem('Option 10', '8', <FileOutlined />),
-  ]),
-  getItem('empty', 'sub5', <FolderOutlined />, []),
-]
 const items2 = [
   {
     label: 'folder1',
@@ -61,13 +28,6 @@ const items2 = [
   },
 ]
 
-// items.concat(getItem())
-
-// key, icon, children
-// const items = [{'key1', 'important_note', <FileOutlined />},{'key1', 'important_note', <FileOutlined />}
-// {'key1', 'important_note', <FileOutlined />}
-// {'key1', 'important_note', <FileOutlined />} ]
-
 const onClick = (e) => {
   console.log('click', e)
 }
@@ -76,26 +36,20 @@ const SideNavBar = () => {
   const folders = useSelector((state) => {
     const folder_data = []
     for (const item in state) {
-      // console.log(state[item])
-      // folder_data.concat(state[item])
       folder_data.push(state[item])
     }
-
-    console.log('folder data:', folder_data)
     return folder_data
   })
 
   const fullState = useSelector((state) => state)
-  // console.log(folders)
-  // console.log('items2:', items2)
-  console.log('state:', fullState)
+  // console.log(fullState)
   return (
     <Menu
       onClick={onClick}
       style={{
         width: 256,
       }}
-      mode='vertical'
+      mode='inline'
       // items={items2}
       items={folders}
     />
@@ -103,3 +57,77 @@ const SideNavBar = () => {
 }
 
 export default SideNavBar
+
+// import 'antd/dist/antd.css'
+// import {
+//   AppstoreOutlined,
+//   MailOutlined,
+//   SettingOutlined,
+// } from '@ant-design/icons'
+// import { Menu } from 'antd'
+
+// import React from 'react'
+
+// function getItem(label, key, icon, children, type) {
+//   return {
+//     key,
+//     icon,
+//     children,
+//     label,
+//     type,
+//   }
+// }
+
+// const items = [
+//   getItem('Navigation One', 'sub1', <MailOutlined />, [
+//     getItem(
+//       'Item 1',
+//       'g1',
+//       null,
+//       [getItem('Option 1', '1'), getItem('Option 2', '2')],
+//       'group'
+//     ),
+//     getItem(
+//       'Item 2',
+//       'g2',
+//       null,
+//       [getItem('Option 3', '3'), getItem('Option 4', '4')],
+//       'group'
+//     ),
+//   ]),
+//   getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
+//     getItem('Option 5', '5'),
+//     getItem('Option 6', '6'),
+//     getItem('Submenu', 'sub3', null, [
+//       getItem('Option 7', '7'),
+//       getItem('Option 8', '8'),
+//     ]),
+//   ]),
+//   getItem('Navigation Three', 'sub4', <SettingOutlined />, [
+//     getItem('Option 9', '9'),
+//     getItem('Option 10', '10'),
+//     getItem('Option 11', '11'),
+//     getItem('Option 12', '12'),
+//   ]),
+// ]
+
+// const SideNavBar = () => {
+//   const onClick = (e) => {
+//     console.log('click ', e)
+//   }
+
+//   return (
+//     <Menu
+//       onClick={onClick}
+//       style={{
+//         width: 256,
+//       }}
+//       defaultSelectedKeys={['1']}
+//       defaultOpenKeys={['sub1']}
+//       mode='inline'
+//       items={items}
+//     />
+//   )
+// }
+
+// export default SideNavBar

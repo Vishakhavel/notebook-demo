@@ -3,6 +3,7 @@ import React, { Fragment } from 'react'
 import { useState } from 'react'
 import Wrapper from './Wrapper'
 import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import {
   AppstoreOutlined,
   FolderOutlined,
@@ -19,13 +20,25 @@ import {
 } from '../constants'
 
 const Form = () => {
+  const folder_names = useSelector((state) => {
+    const folders = []
+    for (const item in state) {
+      // console.log(item)
+      folders.push(item)
+    }
+    console.log('folder names:', folders)
+    return folders
+  })
+
+  const fullState = useSelector((state) => state)
+
   const [file, setFile] = useState('')
   const [folder, setFolder] = useState('')
   const dispatch = useDispatch()
 
   const submitFolderHandler = (event) => {
     event.preventDefault()
-    console.log(folder)
+    // console.log(folder)
     setFolder('')
     // const payload_object = {
     //   label: folder,
@@ -34,14 +47,14 @@ const Form = () => {
     // }
     // console.log(payload_object)
 
-    const payload_object = {
-      label: folder,
-      key: Math.random.toString(),
-      icon: <FolderOutlined />,
-      children: [],
-    }
+    // const payload_object = {
+    //   label: folder,
+    //   key: Math.random.toString(),
+    //   icon: <FolderOutlined />,
+    //   children: [],
+    // }
 
-    console.log('payload object:', payload_object)
+    // console.log('payload object:', payload_object)
     // ;(payload_object[label] = folder),
     dispatch({ type: ADD_FOLDER, payload: folder })
     // console.log({ store })
@@ -49,9 +62,14 @@ const Form = () => {
 
   const submitFileHandler = (event) => {
     event.preventDefault()
-    console.log(file)
+    // console.log(file)
     setFile('')
-    dispatch({ type: ADD_FILE, payload: file })
+    console.log('dispatching file create')
+    dispatch({
+      type: ADD_FILE,
+      payload: { fileName: file, folderName: 'folder_1' },
+    })
+    console.log(fullState)
   }
 
   const handleFileChange = (event) => {

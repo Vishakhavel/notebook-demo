@@ -17,8 +17,9 @@ import {
 } from '../constants'
 
 import store from '../store'
+import { useReducer } from 'react'
 
-// const selectorFunction = (state) => state
+// const sele = (state) => state
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -29,7 +30,9 @@ function getItem(label, key, icon, children, type) {
     type,
   }
 }
-
+// const items = [
+//   {key:}
+// ]
 const items = [
   getItem('important', 'sub1', <FolderOutlined />, [
     getItem('deadlines', '1', <FileOutlined />),
@@ -49,6 +52,16 @@ const items = [
   ]),
   getItem('empty', 'sub5', <FolderOutlined />, []),
 ]
+const items2 = [
+  {
+    label: 'folder1',
+    key: Math.random.toString(),
+    icon: <FolderOutlined />,
+    children: [],
+  },
+]
+
+// items.concat(getItem())
 
 // key, icon, children
 // const items = [{'key1', 'important_note', <FileOutlined />},{'key1', 'important_note', <FileOutlined />}
@@ -60,8 +73,20 @@ const onClick = (e) => {
 }
 
 const SideNavBar = () => {
-  const folders = useSelector((state) => state)
-  console.log(folders)
+  const folders = useSelector((state) => {
+    const folder_data = []
+    for (const item in state) {
+      console.log(state[item])
+      // folder_data.concat(state[item])
+      folder_data.push(state[item])
+    }
+
+    console.log('folder data:', folder_data)
+    return folder_data
+  })
+  // console.log(folders)
+  // console.log('items2:', items2)
+  console.log('store:', store)
   return (
     <Menu
       onClick={onClick}
@@ -69,7 +94,8 @@ const SideNavBar = () => {
         width: 256,
       }}
       mode='vertical'
-      items={items}
+      // items={items2}
+      items={folders}
     />
   )
 }

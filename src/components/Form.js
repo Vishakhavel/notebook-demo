@@ -33,6 +33,16 @@ const Form = () => {
     //   icon: <FolderOutlined />,
     // }
     // console.log(payload_object)
+
+    const payload_object = {
+      label: folder,
+      key: Math.random.toString(),
+      icon: <FolderOutlined />,
+      children: [],
+    }
+
+    console.log('payload object:', payload_object)
+    // ;(payload_object[label] = folder),
     dispatch({ type: ADD_FOLDER, payload: folder })
     // console.log({ store })
   }

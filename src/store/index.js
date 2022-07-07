@@ -12,29 +12,49 @@ import {
 const initialState = {
   folder_1: {
     label: 'folder1',
-    icon: <FileOutlined />,
+    icon: '<FileOutlined />',
     key: Math.random().toString(),
     children: [],
   },
 
   folder_2: {
     label: 'folder2',
-    icon: <FileOutlined />,
+    icon: '<FileOutlined />',
     key: Math.random().toString(),
     children: [
-      { label: 'note1', key: Math.random().toString(), icon: <FileOutlined /> },
-      { label: 'note2', key: Math.random().toString(), icon: <FileOutlined /> },
-      { label: 'note3', key: Math.random().toString(), icon: <FileOutlined /> },
+      {
+        label: 'note1',
+        key: Math.random().toString(),
+        icon: '<FileOutlined />',
+      },
+      {
+        label: 'note2',
+        key: Math.random().toString(),
+        icon: '<FileOutlined />',
+      },
+      {
+        label: 'note3',
+        key: Math.random().toString(),
+        icon: '<FileOutlined />',
+      },
     ],
   },
 
   folder_3: {
     label: 'folder3',
-    icon: <FileOutlined />,
+    icon: '<FileOutlined />',
     key: Math.random().toString(),
     children: [
-      { label: 'note4', key: Math.random().toString(), icon: <FileOutlined /> },
-      { label: 'note5', key: Math.random().toString(), icon: <FileOutlined /> },
+      {
+        label: 'note4',
+        key: Math.random().toString(),
+        icon: '<FileOutlined />',
+      },
+      {
+        label: 'note5',
+        key: Math.random().toString(),
+        icon: '<FileOutlined />',
+      },
     ],
   },
 }
@@ -47,7 +67,7 @@ const folderReducer = (state = initialState, action) => {
     const folderName = action.payload
     new_state[folderName] = {
       label: folderName,
-      icon: <FileOutlined />,
+      icon: '<FileOutlined />',
       key: Math.random().toString(),
       children: [],
     }
@@ -65,7 +85,7 @@ const folderReducer = (state = initialState, action) => {
           ...state[folderName].children,
           {
             label: [fileName],
-            icon: <FileOutlined />,
+            icon: '<FileOutlined />',
             key: Math.random().toString(),
           },
         ],
